@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "./styles";
 
 const Header = (props) => {
+  const {setTipoPokemon, setOrder} = props;
   const pokemontypesArray = [
     "Normal",
     "Fire",
@@ -45,16 +46,17 @@ const Header = (props) => {
         onChange={handleSearch}
         value={props.pesquisa}
       />
-      <select>
+      <select onChange={(e) => setOrder(e.target.value)} >
         <option value="">Ordenar</option>
-        <option value="">Crescente</option>
-        <option value="">Decrescente</option>
+        <option value="min">Crescente</option>
+        <option value="max">Decrescente</option>
       </select>
       <select
         name="tipo"
         id="tipo"
-          >
-        <option value="">Selecione um tipo</option>
+        onChange={(e) => setTipoPokemon(e.target.value)}
+        >
+        <option value=''>Selecione um tipo</option>
         {pokemontypesArray.map((type) => {
           return (
             <option key={type} value={type}>
